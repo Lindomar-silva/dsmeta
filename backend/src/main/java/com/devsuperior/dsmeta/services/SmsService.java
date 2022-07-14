@@ -1,6 +1,5 @@
 package com.devsuperior.dsmeta.services;
 
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,16 +42,12 @@ public class SmsService {
 		String msg = "Vendedor " + sale.getSellerName() + " foi destaque em " + date
 				+ " com um total de R$ " + new DecimalFormat("#,##0.00").format(sale.getAmount());
 		
-		String teste = msg.replace(".",",").replace(",", ".");
-		
-		System.out.println(teste);
-		
 		Twilio.init(twilioSid, twilioKey);
 
 		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
 		PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
 
-		Message message = Message.creator(to, from, teste).create();
+		Message message = Message.creator(to, from, msg).create();
 
 		System.out.println(message.getSid());
 	}
