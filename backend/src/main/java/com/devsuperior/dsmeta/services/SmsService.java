@@ -1,5 +1,7 @@
 package com.devsuperior.dsmeta.services;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -36,7 +38,7 @@ public class SmsService {
 //		String msg = "Vendedor " + sale.getSellerName() + " foi destaque em " + date
 //				+ " com um total de R$ " + String.format("%.2f", sale.getAmount());
 
-		String date = sale.getDate().getMonthValue() + "-" + sale.getDate().getYear();
+		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
 		String msg = "Vendedor " + sale.getSellerName() + " foi destaque em " + date
 				+ " com um total de R$ " + String.format("%.0f", sale.getAmount());
 		
