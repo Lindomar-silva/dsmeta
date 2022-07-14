@@ -34,13 +34,13 @@ public class SmsService {
 
 		Sale sale = repository.findById(saleid).get();
 		
-//		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
-//		String msg = "Vendedor " + sale.getSellerName() + " foi destaque em " + date
-//				+ " com um total de R$ " + String.format("%.2f", sale.getAmount());
-
 		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
 		String msg = "Vendedor " + sale.getSellerName() + " foi destaque em " + date
-				+ " com um total de R$ " + new DecimalFormat("#,##0.00").format(sale.getAmount());
+				+ " com um total de R$ " + String.format("%.2f", sale.getAmount());
+
+//		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
+//		String msg = "Vendedor " + sale.getSellerName() + " foi destaque em " + date
+//				+ " com um total de R$ " + new DecimalFormat("#,##0.00").format(sale.getAmount());
 		
 		Twilio.init(twilioSid, twilioKey);
 
